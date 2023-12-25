@@ -52,14 +52,10 @@
                          :document-version "1.0.0"
                          :mapping          (js/JSON.stringify
                                             (clj->js
-                                             {"borderRouteDetection.json" {:desc  "运维监控 / 运维工具 / 网络诊断"
+                                             {"borderRouteDetection.json" {:desc  "DevOps Monitoring / DevOps Tooling / Network Troubleshooting"
                                                                            :order 26}
-                                              "deviceinspection.json"     {:desc  "运维监控 / 运维工具 / 设备巡检"
-                                                                           :order 25}
-                                              "directconnect.json"        {:desc  "虚拟网络 / 云专线"
-                                                                           :order 11}
-                                              "elastic.json"              {:desc  "系统概况 / 概况"
-                                                                           :order 1}})
+                                              "deviceinspection.json"     {:desc  "DevOps Monitoring / DevOps Tooling / Device Inspection"
+                                                                           :order 25}})
                                             nil 2)}))
 
 (defn handle-upload-file [e]
@@ -99,8 +95,6 @@
       [:div.navbar-start
        [:a.navbar-item {:on-click #(re-frame/dispatch [::events/navigate :home])}
         "Home"]
-       [:a.navbar-item {:on-click #(js/window.open "https://mrin9.github.io/RapiPdf/" "_blank")}
-        "RapiPdf"]
        [:a.navbar-item {:on-click #(js/window.open "https://github.com/corkine" "_blank")}
         [:svg.mr-1 {:t       "1703483460437"
                     :class   "icon"
@@ -119,8 +113,15 @@
      [:div.container
       [:h1.title
        [:span "Swagger Merge and PDF Generator"]]
-      [:h2.subtitle
-       [:span "Concat multiple swagger specs into one, and generate PDF for it!"]]]]]
+      [:h2.subtitle.pt-3
+       [:span.is-size-6 "Concat multiple swagger specs into one, and generate PDF for it!"]
+       [:br]
+       [:span.is-size-6 "Simplified and Traditional Chinese Export Support"]
+       [:br]
+       [:span.is-size-6 "Powered by "
+        [:a  {:style {:text-decoration "underline"}
+              :on-click #(js/window.open "https://mrin9.github.io/RapiPdf/" "_blank")} "RapiPdf"]
+        " and ClojureScript"]]]]]
    [:div.container.content.mt-5
     [:div.ml-5
      [:div.file.is-boxed.mt-3
@@ -133,7 +134,7 @@
         [:span.file-label "Read Swagger .json file(s)"]]]]
      [:div.mt-3
       (if (empty? @dropped-files)
-        [:div "No files uploaded"]
+        [:div.has-text-danger "No files uploaded"]
         [:div
          [:div
           (for [[k v] @dropped-files]

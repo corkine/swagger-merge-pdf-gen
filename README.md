@@ -1,7 +1,6 @@
-# demo
+# Swagger Merge and PDF Generator
 
-A [re-frame](https://github.com/day8/re-frame) application designed to ... well, that part is up to
-you.
+A [re-frame](https://github.com/day8/re-frame) application designed to merge multi swagger json file and generate pdf by rapiPdf, support simple and traditional chinese!
 
 ## Getting Started
 
